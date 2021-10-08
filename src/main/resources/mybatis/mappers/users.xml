@@ -26,4 +26,14 @@
 	FROM users
 	WHERE email=#{value}	
 	</select>
+	
+	<!-- 수정용 쿼리 -->
+	<update id="update" parameterType="userVo" >
+		UPDATE users SET
+			name=#{name}, 
+			password=#{password}, 
+			email=#{email}, 
+			gender=#{gender})
+		WHERE no=#{no}
+	</update>
 </mapper>

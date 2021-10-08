@@ -27,4 +27,23 @@
 	FROM board b, users u
 	WHERE b.user_no = u.no
 	</select>
+	
+	<!-- 조회수 추가 -->
+	<update id="hitplus" parameterType="long">
+		UPDATE board SET hit = 
+			hit+1 where no = #{no}
+	</update>
+	
+	<!-- 수정용 쿼리 -->
+	<update id="update" parameterType="boardVo">
+		UPDATE board SET
+			content=#{content},
+			title=#{title},
+		WHERE no=#{no}
+	</update>
+	
+	<delete id="delete" parameterType="long">
+		DELETE FROM board 
+		WHERE no = #{no}
+	</delete>
 </mapper>

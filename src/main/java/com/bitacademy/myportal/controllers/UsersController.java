@@ -150,4 +150,11 @@ public class UsersController {
 		
 		return map;
 	}
+	// 수정하기
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute UserVo vo, HttpSession session) {
+
+		int updatedCount = userServiceImpl.updateUser(vo);
+		return "redirect:/";
+	}
 }

@@ -7,7 +7,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 </head>
 <body>
-	<form method="post" action="">
+	<form method="post" action="<c:url value="/board/update" />">
 		<table border="1" width="640">
 			<tr>
 				<td colspan="2"><h3>게시판</h3></td>
@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="">취소</a>
+					<a href="<c:url value="/board/${boardNo }" />">">취소</a>
 					<input type="submit" value="수정">
 				</td>
 			</tr>

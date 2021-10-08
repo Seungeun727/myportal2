@@ -45,5 +45,12 @@ public class UserDaoImpl implements UserDao {
 		UserVo vo = sqlSession.selectOne("users.selectUserByEmailAndPassword", userMap);
 		return vo;
 	}
+	
+	// 수정용 기능
+	@Override
+	public int update(UserVo vo) {
+		int updatedCount = sqlSession.update("user.update",vo);
+		return updatedCount;
+	}
 
 }

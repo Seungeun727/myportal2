@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +28,26 @@ public class BoardController {
 		model.addAttribute("list", list);
 		return "board/list";
 	}
+	
+	// 게시물 수정하기
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String update(@ModelAttribute BoardVo vo) {
+		boolean updateSuccess = boardServiceImpl.update(vo);
+		if(updateSuccess) {
+			return "redirect:/board/" + vo.getNo();
+		}
+		return "redirect:/modify";
+	}
+	
+	// 게시물 번호 누르면 삭제
+	@RequestMapping(value="/delete/{no}")
+	public String delete(@PathVariable Long no) {
 
+		boolean deleteSuccess = boardServiceImpl.delete(no);
+		return "redirect:/board/list";
+	}
+		
+	
 	//	게시물 작성 폼
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String writeForm(HttpSession session) {
@@ -40,6 +60,7 @@ public class BoardController {
 		
 		return "board/write";
 	}
+	
 	
 	//	게시물 작성
 	@RequestMapping(value="/write", method=RequestMethod.POST)
@@ -57,4 +78,5 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
 }

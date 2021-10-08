@@ -29,5 +29,14 @@ public class UserServiceImpl implements UserService {
 		UserVo userVo = userDaoImpl.selectUser(email);
 		return userVo;
 	}
+	
+	// 회원정보 수정용 -> userVo 객체에 담긴 데이터가 넘어와야 수정 가능함
+	@Override
+	public int updateUser(UserVo vo) {
+		int updatedCount = userDaoImpl.insert(vo);
+		// return 1 == updatedCount; --> 타입과 반환값이 틀려 에러
+		return updatedCount;
+	}
+	
 
 }

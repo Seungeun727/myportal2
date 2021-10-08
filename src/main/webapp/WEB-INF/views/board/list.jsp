@@ -6,6 +6,9 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<script src="<c:url value="/javascript/jquery/jquery-3.6.0.js"/>"></script>
+	<link rel="stylesheet" href="<c:url value="/css/main.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/css/board.css"/>" />
 </head>
 <body>
 	<table border="1" width="640">
@@ -23,11 +26,11 @@
 		<c:forEach items="${list }" var="vo">
 		<tr>
 			<td>${vo.no }</td>
-			<td><a href="">${vo.title }</a></td>
+			<td><a href="<c:url value="/board/${vo.no }"/>">${vo.title }</a></td>
 			<td>${vo.userName }</td>
 			<td>${vo.hit }</td>
 			<td>${vo.regDate }</td>
-			<td><a href="">삭제</a></td>
+			<td><a href="<c:url value="/board/delete${vo.no }"/>">삭제</a></td>
 		</tr>
 		</c:forEach>
 		
